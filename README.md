@@ -6,6 +6,7 @@ Run laravel on docker container
 - Mariadb
 
 # Using
+- Create folder `storage/mysql` in your laravel project
 - Assuming you're have `docker` and `docker-compose` installed on your machine
 - Put `docker-compose.yml` into your laravel project
 - Run `docker-compose up` to run your laravel app
