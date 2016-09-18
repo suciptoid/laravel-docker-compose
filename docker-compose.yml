@@ -1,0 +1,28 @@
+version: '2'
+services:
+  web:
+    image: eboraas/laravel
+    volumes:
+        - .:/var/www/laravel
+    ports:
+        - "8888:80"
+    depends_on:
+        - database
+    links:
+        - database
+    restart: always
+    environment:
+        - DB_HOST=database
+
+  database:
+      image: mariadb
+      ports:
+          - 3306:3306
+      restart: always
+      volumes:
+          - ./storage/mysql:/var/lib/mysql
+      environment:
+          - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+          - MYSQL_DATABASE=${DB_DATABASE}
+          - MYSQL_USER=${DB_USERNAME}
+          - MYSQL_ALLOW_EMPTY_PASSWORD=yes
